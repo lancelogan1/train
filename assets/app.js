@@ -46,6 +46,15 @@ $(document).ready(function () {
             frequency: frequency,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
+
+        //clearing text boxes 
+        $("#name-input").val("");
+        $("#destination-input").val("");
+        $("#first-input").val("");
+        $("#frequency-input").val("");
+
+        //prevents page refresh
+        return false;
     });
 
 
@@ -56,7 +65,16 @@ $(document).ready(function () {
 
         //storing snapshot.val() in a variable for convenience
         let sv = snapshot.val();      
-    
+        
+        let firebaseName = sv.name;
+        let firebaseDestination = sv.destination;
+        let firebaseFirst = sv.first;
+        let firebaseFrequency = sv.frequency;
+
+        
+
+
+        $("#trainTable > tbody").append("<tr><td>" + firebaseName + "</td><td>" + firebaseDestination + "</td><td>"+ firebaseFirst + "</td><td>" + firebaseFrequency)
     
     })
 
